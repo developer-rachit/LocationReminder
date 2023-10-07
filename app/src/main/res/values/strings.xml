@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Location Reminder</string>
+    <string name="enter_note_title_here">Enter note title here.</string>
+    <string name="search_location_here">Search location here.</string>
+    <string name="enter_note_description_here">Enter note description here.</string>
+    <string name="title_activity_maps">MapsActivity</string>
+</resources>
