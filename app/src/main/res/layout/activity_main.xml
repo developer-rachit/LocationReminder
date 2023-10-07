@@ -8,6 +8,7 @@
     android:layout_margin="20dp">
 
     <Toolbar
+        android:id="@+id/toolBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -18,5 +19,12 @@
             android:text="+" />
 
     </Toolbar>
+
+    <TextView
+        android:id="@+id/tvDB"
+        android:layout_below="@id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="hello" />
 
 </RelativeLayout>

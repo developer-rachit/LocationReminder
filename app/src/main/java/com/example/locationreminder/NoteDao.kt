@@ -1,19 +1,10 @@
 package com.example.locationreminder
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
-import androidx.room.Query
 
 @Dao
 interface NoteDao {
-
     @Insert
-    fun insertAll(vararg  note: Note)
-
-    @Delete
-    fun delete(note: Note)
-
-    @Query("SELECT * FROM note")
-    fun getAll(): List<Note>
+    fun insertAll(vararg note: Note)
 }
