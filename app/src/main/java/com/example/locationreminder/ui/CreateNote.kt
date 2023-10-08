@@ -1,13 +1,18 @@
-package com.example.locationreminder
+package com.example.locationreminder.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.room.Room
+import com.example.locationreminder.db.AppDatabase
+import com.example.locationreminder.db.Note
+import com.example.locationreminder.R
+import com.example.locationreminder.viewmodel.NoteViewModel
+import com.example.locationreminder.viewmodel.NoteViewModelFactory
 import java.util.Date
 
 class CreateNote : AppCompatActivity() {
@@ -51,11 +56,11 @@ class CreateNote : AppCompatActivity() {
 
         btnSave.setOnClickListener {
             Log.d("LoggingStatus", "Save button clicked.")
-//            db.noteDao().insertAll(note)
             noteViewModel.insertNote(note)
             Log.d("LoggingStatus", "view model is called and note is inserted")
 
-
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 }

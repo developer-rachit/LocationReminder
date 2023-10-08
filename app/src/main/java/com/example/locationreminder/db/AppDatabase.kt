@@ -1,4 +1,4 @@
-package com.example.locationreminder
+package com.example.locationreminder.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
