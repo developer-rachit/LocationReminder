@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var noteViewModel: NoteViewModel
 
     private lateinit var btnCreateNote: Button
-    private lateinit var notesList: List<Note>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d("LoggingStatus", "entered onCreate MainActivity.kt")
@@ -43,6 +42,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //here our note is saved in db
+
+
+        //recycler view
+
         Log.d("LoggingStatus", "btnCreatNote completed")
 
         db = Room.databaseBuilder(
@@ -57,30 +61,26 @@ class MainActivity : AppCompatActivity() {
 
         Log.d("LoggingStatus", "recycler view initialized and db instance created")
 
-        notesList = emptyList()
+        var notesList = mutableListOf<Note>()
 
-        //create and set updater
         val adapter = NoteAdapter(notesList)
         recyclerView.adapter = adapter
 
         //viewmodel initialization
         noteViewModel = ViewModelProvider(this@MainActivity, NoteViewModelFactory(db)).get(NoteViewModel::class.java)
 
+
+
+
         noteViewModel.getNotesLiveData().observe(this) { notes ->
-            notesList = notes
+            notesList.clear() // Clear the existing list
+            notesList.addAll(notes) // Add the new notes to the list
             adapter.notifyDataSetChanged()
         }
 
-        Log.d("LoggingStatus", "adapter set, view model initialized")
+        Log.d("LoggingStatus", "adapter set, view model initialized $notesList")
 
         noteViewModel.getNotes()
-
-        print(notesList)
-
-        for(i in notesList) {
-            Log.d("LoggingStatus", i.toString())
-        }
-
     }
 }
 

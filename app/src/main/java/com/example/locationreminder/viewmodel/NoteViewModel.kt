@@ -14,6 +14,7 @@ import kotlinx.coroutines.withContext
 class NoteViewModel(private val db: AppDatabase): ViewModel(){
 
     private val notesLiveData = MutableLiveData<List<Note>>()
+    lateinit  var listOfNote: List<Note>
 
     fun getNotesLiveData(): LiveData<List<Note>> {
         return notesLiveData
@@ -32,10 +33,13 @@ class NoteViewModel(private val db: AppDatabase): ViewModel(){
     }
 
     fun getNotes() {
-        viewModelScope.launch {
+                viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                val notesList = db.noteDao().getALl()
+                var notesList = db.noteDao().getALl()
+                Log.d("LoggingStatus", "in NoteViewModel.kt $notesList")
+
                 notesLiveData.postValue(notesList)
+
             }
         }
     }

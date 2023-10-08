@@ -22,8 +22,8 @@ class CreateNote : AppCompatActivity() {
     private lateinit var note: Note
 
     //ui elements
-    private lateinit var edTitle: EditText
-    private lateinit var edNoteText: EditText
+//    private lateinit var edTitle: EditText
+//    private lateinit var edNoteText: EditText
     private lateinit var btnSave: Button
 
     //viewmodel
@@ -36,8 +36,8 @@ class CreateNote : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_note)
 
-        edTitle = findViewById(R.id.ed_note_title)
-        edNoteText = findViewById(R.id.ed_note_text)
+//        edTitle = findViewById(R.id.ed_note_title)
+//        edNoteText = findViewById(R.id.ed_note_text)
         btnSave = findViewById(R.id.btnSave)
 
         db = Room.databaseBuilder(
@@ -48,13 +48,16 @@ class CreateNote : AppCompatActivity() {
         //viewmodel initialization
         noteViewModel = ViewModelProvider(this, NoteViewModelFactory(db)).get(NoteViewModel::class.java)
 
-        val title = edTitle.text.toString()
-        val noteText = edNoteText.text?.toString()
-        note = Note(Date().toString(), title, noteText)
 
         Log.d("LoggingStatus", "just before save button is clicked")
 
         btnSave.setOnClickListener {
+
+            var edTitle = findViewById<EditText>(R.id.ed_note_title)
+            var edNoteText = findViewById<EditText>(R.id.ed_note_text)
+
+            note = Note(Date().toString(), edTitle.text.toString(), edNoteText.text.toString())
+
             Log.d("LoggingStatus", "Save button clicked.")
             noteViewModel.insertNote(note)
             Log.d("LoggingStatus", "view model is called and note is inserted")
