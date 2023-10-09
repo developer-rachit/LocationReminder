@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     //viewmodel
     private lateinit var noteViewModel: NoteViewModel
 
+    // ui
     private lateinit var btnCreateNote: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // ui initialization
         btnCreateNote = findViewById(R.id.btnCreateNote)
 
         btnCreateNote.setOnClickListener {
@@ -68,8 +71,6 @@ class MainActivity : AppCompatActivity() {
 
         //viewmodel initialization
         noteViewModel = ViewModelProvider(this@MainActivity, NoteViewModelFactory(db)).get(NoteViewModel::class.java)
-
-
 
 
         noteViewModel.getNotesLiveData().observe(this) { notes ->

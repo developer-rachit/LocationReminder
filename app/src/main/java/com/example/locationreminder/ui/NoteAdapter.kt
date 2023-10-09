@@ -15,6 +15,7 @@ class NoteAdapter(private val notes: List<Note>): RecyclerView.Adapter<NoteAdapt
         val tvNoteTitle: TextView = itemView.findViewById(R.id.tvNoteTitle)
         val tvNoteText: TextView = itemView.findViewById(R.id.tvNoteText)
         val tvNoteCreatd: TextView = itemView.findViewById(R.id.tvCreatedTime)
+        val tvRemindTime: TextView = itemView.findViewById(R.id.tvRemindTime)
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteAdapter.ViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.note_item, parent, false)
@@ -26,7 +27,7 @@ class NoteAdapter(private val notes: List<Note>): RecyclerView.Adapter<NoteAdapt
         holder.tvNoteTitle.text = note.noteTitle
         holder.tvNoteText.text = note.noteText
         holder.tvNoteCreatd.text = note.uid
-
+        holder.tvRemindTime.text = note.noteRemindTime
     }
 
     override fun getItemCount(): Int {

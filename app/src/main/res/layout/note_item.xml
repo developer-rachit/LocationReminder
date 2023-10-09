@@ -30,13 +30,53 @@
                 android:layout_below="@id/tvNoteTitle"
                 android:textSize="16sp"/>
 
-            <TextView
-                android:id="@+id/tvCreatedTime"
+            <LinearLayout
+                android:id="@+id/layoutRemindTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvNoteText"
-                android:textSize="12sp"
-                android:textColor="#BC6A6565"/>
+                android:orientation="horizontal"
+                android:layout_below="@id/tvNoteText">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Remind time : "
+                    android:textSize="14sp"
+                    android:textColor="#BC6A6565"/>
+
+                <TextView
+                    android:id="@+id/tvRemindTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#BC6A6565"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutCreatedTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/layoutRemindTime">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Created time : "
+                    android:textSize="14sp"
+                    android:textColor="#BC6A6565"/>
+
+                <TextView
+                    android:id="@+id/tvCreatedTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/layoutRemindTime"
+                    android:textSize="14sp"
+                    android:textColor="#BC6A6565"/>
+
+            </LinearLayout>
+
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

@@ -25,13 +25,39 @@
         android:layout_below="@id/ed_note_title"
         android:layout_margin="20dp"/>
 
+    <LinearLayout
+        android:id="@+id/layoutSetTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ed_note_text"
+        android:orientation="horizontal"
+        android:layout_margin="20dp">
+
+        <Button
+            android:id="@+id/btnSetTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/set_time"
+            android:layout_weight="0.1" />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="09"
+            android:hint="@string/time"
+            android:layout_marginStart="30dp"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
     <Button
         android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/save"
         android:layout_marginTop="20dp"
-        android:layout_below="@+id/ed_note_text"
+        android:layout_below="@+id/layoutSetTime"
         android:layout_centerHorizontal="true"/>
 
     <TextView
